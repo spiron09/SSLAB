@@ -16,8 +16,6 @@ D : ID D
 
 extern FILE *yyin;
 
-
-
 void main()
 {
  yyin = fopen("A.c", "r");
