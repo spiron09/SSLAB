@@ -1,27 +1,29 @@
 %{
 #include<stdio.h>
-int opr_cnt = 0, opnd_cnt = 0, brac_cnt = 0;    
+int v=0,op=0,id=0,flag=0;
 %}
 %%
-[0-9]+ {opnd_cnt++;}
-[+\-*/] {opr_cnt++;}
-[(] {brac_cnt++;}
-[)] {brac_cnt--;}
+[0-9][0-9]* {id++;printf("\n %s is Identifier", yytext);}
+[\+\-\*\/\=] {op++;printf("\n%s is Operartor", yytext);}
+"(" {v++;}
+")" {v--;}
+";" {flag=1;}
+.|\n {return 0;}
 %%
-int main(){
-    printf("Enter expression!\n");
+int main()
+{
+    printf("Enter the expression:\n");
     yylex();
-    if(brac_cnt!=0 || opr_cnt>=opnd_cnt || opnd_cnt == 1)
-        printf("Invalid");
+    if((op+1) ==id && v==0 && flag==0)
+    {
+        printf("\n\nIdentifiers are:%d\nOperators are:%d\n",id,op);
+        printf("\nExpression is Valid\n");
+    }
     else
-        printf("Valid");
-
-    return 0;
+        printf("\nExpression is Invalid\n");
+    return 1;
 }
-
-void yyerror(){
-    printf("Invalid Expression");
-    return 0;
+int yywrap()
+{
+    return 1;
 }
-
-int yywrap(){return(1);}

@@ -15,7 +15,6 @@ int main()
     printf("\n\n\tEnter the string: ");
     scanf("%s", s);
     for (i = 0; i < f; i++)
-
         F[i] = -1;
     do
     {
@@ -26,7 +25,6 @@ int main()
 
         switch (ch)
         {
-
         case 1:
             for (i = 0; i < f; i++)
             {
@@ -34,9 +32,9 @@ int main()
             }
             FIFO(s, F, l, f);
             break;
+
         case 2:
             for (i = 0; i < f; i++)
-
             {
                 F[i] = -1;
             }
@@ -47,14 +45,13 @@ int main()
             exit(0);
         }
         printf("\n\n\tDo u want to continue IF YES PRESS 1\n\n\tIF NO PRESS 0 : ");
-
         scanf("%d", &YN);
+
     } while (YN == 1);
     return (0);
 }
 // FIFO
 void FIFO(char s[], char F[], int l, int f)
-
 {
     int i, j = 0, k, flag = 0, cnt = 0;
     printf("\n\tPAGE\t	FRAMES\t");
@@ -67,13 +64,10 @@ void FIFO(char s[], char F[], int l, int f)
         }
         if (flag == 0)
         {
-
             printf("\n\t%c\t", s[i]);
-
             F[j] = s[i];
             j++;
             for (k = 0; k < f; k++)
-
             {
                 printf("	%c", F[k]);
             }
@@ -83,13 +77,11 @@ void FIFO(char s[], char F[], int l, int f)
         else
         {
             flag = 0;
-
             printf("\n\t%c\t", s[i]);
             for (k = 0; k < f; k++)
             {
                 printf("	%c", F[k]);
             }
-
             printf("\tNo page-fault");
         }
         if (j == f)
@@ -99,24 +91,20 @@ void FIFO(char s[], char F[], int l, int f)
 // LRU
 void lru(char s[], char F[], int l, int f)
 {
-
     int i, j = 0, k, m, flag = 0, cnt = 0, top = 0;
     printf("\n\tPAGE\t	FRAMES\t FAULTS");
     for (i = 0; i < l; i++)
     {
         for (k = 0; k < f; k++)
-
         {
             if (F[k] == s[i])
             {
                 flag = 1;
-
                 break;
             }
         }
         printf("\n\t%c\t", s[i]);
         if (j != f && flag != 1)
-
         {
             F[top] = s[i];
             j++;
@@ -124,7 +112,6 @@ void lru(char s[], char F[], int l, int f)
                 top++;
         }
         else
-
         {
             if (flag != 1)
             {
@@ -146,18 +133,15 @@ void lru(char s[], char F[], int l, int f)
             }
         }
         for (k = 0; k < f; k++)
-
         {
             printf("	%c", F[k]);
         }
         if (flag == 0)
-
         {
             printf("\tPage-fault%d", cnt);
             cnt++;
         }
         else
-
             printf("\tNo page fault");
         flag = 0;
     }

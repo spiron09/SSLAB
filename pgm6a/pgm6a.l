@@ -3,7 +3,7 @@
 
 %%
 "//".* {fprintf(yyout, "");}
-"/*"([^*]|"*"+[^*/])*"*"+"/" {fprintf(yyout, "");}
+"/*"([^*]|"*"+[^*/])*"*/" {fprintf(yyout, "");}
 . {fprintf(yyout, "%s", yytext);}
 %%
 

@@ -75,6 +75,7 @@ void rr(struct time a[], int n, int sum, int q)
         }
     }
 }
+
 int main()
 {
     int i, j, ch, k = 1;
@@ -83,7 +84,6 @@ int main()
 
     while (k) // while k remains 1 more p...
     {
-
         cout << "\n enter the number of processes\n";
         cin >> n;
         sum = 0; //

@@ -1,28 +1,26 @@
 %{
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
 %}
-
-%token NUM
+%token num
 %left '+' '-'
 %left '*' '/'
-
 %%
-S: E '\n' {printf("value = %d", $1);}
-E: E '+' E {$$ = $1 + $3;}
- | E '-' E {$$ = $1 - $3;}
- | E '*' E {$$ = $1 * $3;}
- | E '/' E {if($3==0) printf("Div by 0");
-            else $$ = $1 * $3;}
- | '(' E ')' {$$ = $2;}
- | NUM {$$ = $1;}
+input:exp {printf("%d\n",$$);exit(0);}
+exp: exp'+'exp {$$=$1+$3;}
+|exp'-'exp{$$=$1-$3;}
+|exp'*'exp{$$=$1*$3;}
+|exp'/'exp { if($3==0){printf("Divide by Zero. Invalid expression.\n");exit(0);} else $$=$1/$3;}
+|'('exp')'{$$=$2;}
+|num{$$=$1;};
 %%
-
-void yyerror(){
-    printf("Invalid!");
+int yyerror()
+{
+printf("Error. Invalid Expression.\n");
+exit(0);
 }
-
-void main(){
-    printf("Enter exp!");
-    yyparse();
-    return 0;
+int main()
+{
+printf("Enter an expression:\n");
+yyparse();
 }

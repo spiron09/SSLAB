@@ -19,7 +19,6 @@ void main()
         if (a[j] == 'i' && a[j + 1] == 'd')
         {
             stk[i] = a[j];
-
             stk[i + 1] = a[j + 1];
             stk[i + 2] = '\0';
             a[j] = ' ';
@@ -49,8 +48,8 @@ void check()
         if (stk[z] == 'i' && stk[z + 1] == 'd')
         {
             stk[z] = 'E';
-
             stk[z + 1] = '\0';
+            
             printf("\n$%s\t%s$\t%s", stk, a, ac);
             j++;
         }
@@ -60,8 +59,8 @@ void check()
         {
             stk[z] = 'E';
             stk[z + 1] = '\0';
-
             stk[z + 2] = '\0';
+            
             printf("\n$%s\t%s$\t%s", stk, a, ac);
             i = i - 2;
         }
@@ -72,7 +71,7 @@ void check()
             stk[z] = 'E';
             stk[z + 1] = '\0';
 
-            stk[z + 1] = '\0';
+            stk[z + 2] = '\0';
             printf("\n$%s\t%s$\t%s", stk, a, ac);
             i = i - 2;
         }
@@ -82,7 +81,7 @@ void check()
         {
             stk[z] = 'E';
             stk[z + 1] = '\0';
-            stk[z + 1] = '\0';
+            stk[z + 2] = '\0';
             printf("\n$%s\t%s$\t%s", stk, a, ac);
             i = i - 2;
         }
